@@ -44,14 +44,14 @@ def sendwhatmsg_instantly(
         core.close_tab(wait_time=close_time)
 
 
-def sendimg_or_video_immediately(
+def sendimg_or_video_instantly(
         phone_no: str,
         path: str,
         wait_time: int = 15,
         tab_close: bool = False,
         close_time: int = 3,
 ) -> None:
-    """Send WhatsApp Message Instantly"""
+    """Send WhatsApp Image or Video Instantly"""
 
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
@@ -83,14 +83,14 @@ def sendimg_or_video_immediately(
         core.close_tab(wait_time=close_time)
 
 
-def sendwhatdoc_immediately(
+def sendwhatdoc_instantly(
         phone_no: str,
         path: str,
         wait_time: int = 15,
         tab_close: bool = True,
         close_time: int = 3,
 ) -> None:
-    """Send WhatsApp Message Instantly"""
+    """Send WhatsApp Document Instantly"""
 
     if not core.check_number(number=phone_no):
         raise exceptions.CountryCodeException("Country Code Missing in Phone Number!")
@@ -232,7 +232,8 @@ def sendwhatsmsg_to_all(
         wait_time: int = 15,
         tab_close: bool = False,
         close_time: int = 3,
-):
+) -> None:
+     """Send Message to all WhatsApp Contacs in param:phone_nos at a Certain Time"""
     for phone_no in phone_nos:
         sendwhatmsg(
             phone_no, message, time_hour, time_min, wait_time, tab_close, close_time
@@ -287,5 +288,4 @@ def open_web() -> bool:
         web.open("https://web.whatsapp.com")
     except web.Error:
         return False
-    else:
-        return True
+    return True
